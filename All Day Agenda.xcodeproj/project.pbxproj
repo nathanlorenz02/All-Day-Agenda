@@ -18,6 +18,7 @@
 		4360E6C81F90345700FF59E2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4360E6C71F90345700FF59E2 /* MessageUI.framework */; };
 		43D9DC481F4A8D890032A4FF /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9DC471F4A8D890032A4FF /* AddItemViewController.swift */; };
 		43D9DC4A1F4A8DE80032A4FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9DC491F4A8DE80032A4FF /* SettingsViewController.swift */; };
+		43FF6C03219527A10041AF4D /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF6C02219527A10041AF4D /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		4360E6C71F90345700FF59E2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		43D9DC471F4A8D890032A4FF /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		43D9DC491F4A8DE80032A4FF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		43FF6C02219527A10041AF4D /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +85,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43083F0F21892DA9009A7750 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4356BC4A1F4A36BA007A09C9 = {
 			isa = PBXGroup;
 			children = (
+				43083F0F21892DA9009A7750 /* Extensions */,
 				4356BC551F4A36BA007A09C9 /* All Day Agenda */,
 				4356BC6D1F4A36BA007A09C9 /* All Day AgendaTests */,
 				4356BC781F4A36BA007A09C9 /* All Day AgendaUITests */,
@@ -111,6 +121,7 @@
 				4356BC581F4A36BA007A09C9 /* ViewController.swift */,
 				43D9DC471F4A8D890032A4FF /* AddItemViewController.swift */,
 				43D9DC491F4A8DE80032A4FF /* SettingsViewController.swift */,
+				43FF6C02219527A10041AF4D /* InfoViewController.swift */,
 				4356BC5A1F4A36BA007A09C9 /* Main.storyboard */,
 				4356BC601F4A36BA007A09C9 /* Assets.xcassets */,
 				4356BC621F4A36BA007A09C9 /* LaunchScreen.storyboard */,
@@ -290,6 +301,7 @@
 				4356BC591F4A36BA007A09C9 /* ViewController.swift in Sources */,
 				4356BC5F1F4A36BA007A09C9 /* All_Day_Agenda.xcdatamodeld in Sources */,
 				4356BC571F4A36BA007A09C9 /* AppDelegate.swift in Sources */,
+				43FF6C03219527A10041AF4D /* InfoViewController.swift in Sources */,
 				43D9DC4A1F4A8DE80032A4FF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

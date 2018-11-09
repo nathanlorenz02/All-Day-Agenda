@@ -15,10 +15,18 @@ import UserNotifications
 
 class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate, SFSafariViewControllerDelegate {
     
-
+    @IBOutlet var backgroundOutlet: UIView!
+    @IBOutlet weak var notificationsLabel: UILabel!
+    @IBOutlet weak var uiview1: UIView!
+    @IBOutlet weak var uiview2: UIView!
+    @IBOutlet weak var uiview3: UIView!
+    @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var reportButtonLabel: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
        //Asks for notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
@@ -42,6 +50,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         } else {
             
         }
+        
+        reportButtonLabel.layer.cornerRadius = 10
 
 
     }
@@ -132,6 +142,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
 
         }
     }
+    
+
     
     
  

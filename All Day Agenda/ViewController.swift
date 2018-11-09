@@ -17,7 +17,6 @@ class customTableView: UITableViewCell {
     @IBOutlet weak var notesText: UILabel!
     @IBOutlet weak var priorityText: UILabel!
     
-    @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     
 
@@ -63,8 +62,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         if cell.priorityText.text == "Low"
         {
-            
+            //Color already set to green
         }
+       
+        
         
         cell.view2.layer.cornerRadius = 20
        
@@ -100,6 +101,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         {
             tableView.isHidden = false
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -168,6 +170,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 tableView.isHidden = true
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        var title2 = String()
+        var priority2 = String()
+        var description2 = String()
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let title = titleName[indexPath.row]
+        title2 = (title.value(forKeyPath: "name") as? String)!
+        
+        let priority = priorityName[indexPath.row]
+        priority2 = (priority.value(forKeyPath: "priority") as? String)!
+        
+        let description = descriptionName[indexPath.row]
+        description2 = (description.value(forKeyPath: "descriptionText") as? String)!
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let infoVC = storyboard.instantiateViewController(withIdentifier: "showInfo") as! InfoViewController
+        infoVC.titleName = title2
+        infoVC.priorityType = priority2
+        infoVC.descriptionText = description2
+        self.present(infoVC, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

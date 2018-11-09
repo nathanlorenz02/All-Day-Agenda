@@ -16,6 +16,11 @@ import CoreData
 class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var addItemOutlet: UIButton!
+    @IBOutlet weak var priorityLabel: UILabel!
+    
+    
     var selectedPriority: String?
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -69,6 +74,8 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
         createPriorityPicker()
         pickerViewToolBar()
+        
+        addItemOutlet.layer.cornerRadius = 10
         
         
         navigationItem.hidesBackButton = true
