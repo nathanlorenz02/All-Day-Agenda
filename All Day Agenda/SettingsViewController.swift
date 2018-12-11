@@ -16,9 +16,6 @@ import UserNotifications
 class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate, SFSafariViewControllerDelegate {
     
     @IBOutlet var backgroundOutlet: UIView!
-    @IBOutlet weak var notificationsLabel: UILabel!
-    @IBOutlet weak var uiview1: UIView!
-    @IBOutlet weak var uiview2: UIView!
     @IBOutlet weak var uiview3: UIView!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var reportButtonLabel: UIButton!
@@ -27,22 +24,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-       //Asks for notifications
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
-            if didAllow
-            {
-                
-                
-            }
-            else
-            {
-                
-                
-            }
-            
-        })
-        
+    
         navigationItem.hidesBackButton = true
         
         if #available(iOS 11.0, *) {
@@ -60,13 +42,6 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        notifiSwitch.setOn(UserDefaults.standard.bool(forKey: "SwitchValue"), animated: true)
-    }
-    
     
    
     @objc func configuredMailComposeViewController() -> MFMailComposeViewController
@@ -106,46 +81,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         
    
     }
-    
-    
-    
-    @IBOutlet weak var notifiSwitch: UISwitch!
-    
-    @IBAction func notificationsSwitch(_ sender: Any)
-    {
-        if notifiSwitch.isOn == true
-        {
-            let content = UNMutableNotificationContent()
-            content.body = "Don't forget to check your agenda for upcoming tasks and reminders!"
-            content.sound = UNNotificationSound.default()
-            content.badge = 1
-            
-           
-            
-            var dateComponents = DateComponents()
-            dateComponents.hour = 9
-            dateComponents.minute = 00
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-            
-            let request = UNNotificationRequest(identifier: "5hours", content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
-            UserDefaults.standard.set(notifiSwitch.isOn, forKey: "SwitchValue")
-            
-        }
-        if notifiSwitch.isOn == false
-        {
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            
-            UserDefaults.standard.set(notifiSwitch.isOn, forKey: "SwitchValue")
 
-        }
-    }
-    
-
-    
-    
  
     @IBAction func reportProblemButton(_ sender: Any)
     {

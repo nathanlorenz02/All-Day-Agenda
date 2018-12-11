@@ -18,7 +18,9 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var addItemOutlet: UIButton!
-    @IBOutlet weak var priorityLabel: UILabel!
+    @IBOutlet weak var notiSwitch: UISwitch!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     
     
     var selectedPriority: String?
@@ -72,6 +74,23 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //Asks for notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
+            if didAllow
+            {
+                
+                
+            }
+            else
+            {
+                
+                
+            }
+            
+        })
+        
+        
         createPriorityPicker()
         pickerViewToolBar()
         
@@ -84,6 +103,7 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         titleTextBox.delegate = self
         textField.text = "Item Description"
         textField.textColor = UIColor.lightGray
+        
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
@@ -121,6 +141,17 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     
+    @IBAction func notificationsOn(_ sender: Any)
+    {
+        if notiSwitch.isOn == true
+        {
+            datePicker.isEnabled = true
+        }
+        else
+        {
+            datePicker.isEnabled = false
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -228,10 +259,49 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
     }
     
+    func addNotification()
+    {
+        let content = UNMutableNotificationContent()
+        content.body = (titleTextBox.text as String?)!
+        content.sound = UNNotificationSound.default()
+        
+        var dateComponents = DateComponents()
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy"
+        let yearDate = Int(dateformatter.string(from: self.datePicker.date))
+        dateformatter.dateFormat = "MM"
+        let monthDate = Int(dateformatter.string(from: self.datePicker.date))
+        dateformatter.dateFormat = "dd"
+        let dayDate = Int(dateformatter.string(from: self.datePicker.date))
+        dateformatter.dateFormat = "HH"
+        let hourDate = Int(dateformatter.string(from: self.datePicker.date))
+        dateformatter.dateFormat = "mm"
+        let minDate = Int(dateformatter.string(from: self.datePicker.date))
+        dateComponents.year = yearDate
+        dateComponents.month = monthDate
+        dateComponents.day = dayDate
+        dateComponents.hour = hourDate
+        dateComponents.minute = minDate
+        
+       
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: "dkjf;d", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
     
     
     @IBAction func addItemButton(_ sender: Any)
     {
+        if notiSwitch.isOn == true
+        {
+            addNotification()
+        }
+        else
+        {
+            //Not adding notfication
+        }
         
         //Add Item
         //Title Box
@@ -277,10 +347,17 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             
             addPriority()
         }
+        else if priorityTextBox.text != "Low" && priorityTextBox.text != "Medium" && priorityTextBox.text != "High"
+        {
+            priorityTextBox.text = "Low"
+            
+            addPriority()
+        }
         else if priorityTextBox.text != ""
         {
             addPriority()
         }
+       
         
         
         //Resetting

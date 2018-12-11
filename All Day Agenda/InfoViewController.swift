@@ -40,11 +40,6 @@ class InfoViewController: UIViewController {
         {
             priorityOutlet.textColor = UIColor.red
         }
-        else
-        {
-            priorityOutlet.textColor = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
-            priorityType = "Low"
-        }
         
         
         titleOutlet.text = "\(titleName)"
