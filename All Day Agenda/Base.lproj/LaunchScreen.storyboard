@@ -18,19 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="All Day Agenda" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAg-el-P4M">
-                                <rect key="frame" x="36" y="268" width="248" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="3wR-xZ-P2o"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Day Agenda 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpL-U5-fPT">
                                 <rect key="frame" x="90.5" y="527" width="139" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="All Day Agenda" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAg-el-P4M">
+                                <rect key="frame" x="36" y="259" width="248" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3wR-xZ-P2o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -39,9 +39,9 @@
                             <constraint firstItem="SVL-Bd-HlB" firstAttribute="bottom" secondItem="UpL-U5-fPT" secondAttribute="bottom" constant="20" id="9c6-W0-fv5"/>
                             <constraint firstItem="UpL-U5-fPT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="G5U-14-aDO"/>
                             <constraint firstItem="UpL-U5-fPT" firstAttribute="centerX" secondItem="MAg-el-P4M" secondAttribute="centerX" id="OrZ-az-SiI"/>
-                            <constraint firstItem="UpL-U5-fPT" firstAttribute="top" secondItem="MAg-el-P4M" secondAttribute="bottom" constant="226" id="b4t-QB-K34"/>
-                            <constraint firstItem="MAg-el-P4M" firstAttribute="top" secondItem="SVL-Bd-HlB" secondAttribute="top" constant="248" id="eoZ-g8-ENe"/>
-                            <constraint firstItem="SVL-Bd-HlB" firstAttribute="bottom" secondItem="MAg-el-P4M" secondAttribute="bottom" constant="267" id="jEZ-PO-ab0"/>
+                            <constraint firstItem="UpL-U5-fPT" firstAttribute="top" secondItem="MAg-el-P4M" secondAttribute="bottom" constant="218" id="b4t-QB-K34"/>
+                            <constraint firstItem="MAg-el-P4M" firstAttribute="top" secondItem="SVL-Bd-HlB" secondAttribute="top" constant="239" id="eoZ-g8-ENe"/>
+                            <constraint firstItem="SVL-Bd-HlB" firstAttribute="bottom" secondItem="MAg-el-P4M" secondAttribute="bottom" constant="259" id="jEZ-PO-ab0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SVL-Bd-HlB"/>
                     </view>
