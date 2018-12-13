@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import UserNotifications
 
 
 
@@ -81,6 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         super.viewDidLoad()
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -108,10 +109,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(true)
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -150,6 +158,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         if editingStyle == UITableViewCellEditingStyle.delete
         {
+            
+            var title2 = String()
+            let title = titleName[indexPath.row]
+            title2 = (title.value(forKeyPath: "name") as? String)!
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [title2])
+            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             context.delete(titleName[indexPath.row])

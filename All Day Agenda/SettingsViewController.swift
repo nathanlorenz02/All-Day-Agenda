@@ -15,8 +15,6 @@ import UserNotifications
 
 class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate, SFSafariViewControllerDelegate {
     
-    @IBOutlet var backgroundOutlet: UIView!
-    @IBOutlet weak var uiview3: UIView!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var reportButtonLabel: UIButton!
     
