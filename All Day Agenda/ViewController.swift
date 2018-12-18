@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var titleName: [NSManagedObject] = []
     var descriptionName: [NSManagedObject] = []
     var priorityName: [NSManagedObject] = []
+    var notiIdentifier: [NSManagedObject] = []
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -51,6 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.titleText?.text = name.value(forKey: "name") as? String
         cell.notesText?.text = description.value(forKey: "descriptionText") as? String
         cell.priorityText?.text = priority.value(forKey: "priority") as? String
+        
         
         if cell.priorityText.text == "High"
         {
@@ -127,12 +129,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Name")
         let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "Description")
         let fetchRequest3 = NSFetchRequest<NSManagedObject>(entityName: "Priority")
+        let fetchRequest4 = NSFetchRequest<NSManagedObject>(entityName: "NotiIdentifier")
         
         do
         {
             titleName = try context.fetch(fetchRequest)
             descriptionName = try context.fetch(fetchRequest2)
             priorityName = try context.fetch(fetchRequest3)
+            notiIdentifier = try context.fetch(fetchRequest4)
         }
         catch
         {
@@ -159,20 +163,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if editingStyle == UITableViewCellEditingStyle.delete
         {
             
-            var title2 = String()
-            let title = titleName[indexPath.row]
-            title2 = (title.value(forKeyPath: "name") as? String)!
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [title2])
-            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
+            
+            var title2 = String()
+            let notiID = notiIdentifier[indexPath.row]
+            title2 = notiID.value(forKey: "notiIdentifier") as! String
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [title2])
+            
             context.delete(titleName[indexPath.row])
             context.delete(descriptionName[indexPath.row])
             context.delete(priorityName[indexPath.row])
+            context.delete(notiIdentifier[indexPath.row])
             
             titleName.remove(at: indexPath.row)
             descriptionName.remove(at: indexPath.row)
             priorityName.remove(at: indexPath.row)
+            notiIdentifier.remove(at: indexPath.row)
             
             do
             {

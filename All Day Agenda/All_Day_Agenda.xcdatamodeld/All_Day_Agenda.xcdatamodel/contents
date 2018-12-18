@@ -6,6 +6,9 @@
     <entity name="Name" representedClassName="Name" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="NotiIdentifier" representedClassName="NotiIdentifier" syncable="YES" codeGenerationType="class">
+        <attribute name="notiIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Priority" representedClassName="Priority" syncable="YES" codeGenerationType="class">
         <attribute name="priority" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -13,5 +16,6 @@
         <element name="Description" positionX="-54" positionY="0" width="128" height="60"/>
         <element name="Name" positionX="-63" positionY="-18" width="128" height="60"/>
         <element name="Priority" positionX="-36" positionY="18" width="128" height="60"/>
+        <element name="NotiIdentifier" positionX="-45" positionY="9" width="128" height="60"/>
     </elements>
 </model>

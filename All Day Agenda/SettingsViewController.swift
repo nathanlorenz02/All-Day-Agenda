@@ -45,12 +45,21 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @objc func configuredMailComposeViewController() -> MFMailComposeViewController
     {
         let systemVersion = UIDevice.current.systemVersion
+        
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+        guard let value = element.value as? Int8 , value != 0 else { return identifier }
+        return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        
         let mailComposeVC = MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
         
         mailComposeVC.setToRecipients(["allswiftdeveloper@gmail.com"])
         mailComposeVC.setSubject("Reported Problem - All Day Agenda")
-        mailComposeVC.setMessageBody("System Information\n\n iOS \(systemVersion) \n Version 1.0.0 \n\n Hi Team!\n\n", isHTML: false)
+        mailComposeVC.setMessageBody("System Information\n\n iOS \(systemVersion) \n \(identifier) \n Version 1.0.0 \n\n Hi Team!\n\n", isHTML: false)
         
         return mailComposeVC
     }

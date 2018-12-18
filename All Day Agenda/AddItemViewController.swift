@@ -283,10 +283,28 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         dateComponents.hour = hourDate
         dateComponents.minute = minDate
         
-        let notificationIdentifier = titleTextBox.text
+        let uuid = UUID().uuidString
+        let notificationIdentifier = titleTextBox.text! + uuid
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "NotiIdentifier", in: context)!
+        let theName = NSManagedObject(entity: entity, insertInto: context)
+        theName.setValue(notificationIdentifier, forKey: "notiIdentifier")
+        
+        do
+        {
+            try context.save()
+            
+            
+        }
+        catch
+        {
+            print("Error: Couldn't save title")
+        }
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: notificationIdentifier!, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
