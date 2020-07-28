@@ -67,13 +67,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //Color already set to green
         }
        
-        
-        
         cell.view2.layer.cornerRadius = 20
        
         return cell
-        
-        
     }
 
     
@@ -83,20 +79,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         super.viewDidLoad()
         
-        UIApplication.shared.applicationIconBadgeNumber = 0
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        } else {
-            
-        }
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.hidesBackButton = true
-        
-        UIApplication.shared.applicationIconBadgeNumber = 0
+    
         
         if titleName.count == 0
         {
@@ -111,17 +101,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        UIApplication.shared.applicationIconBadgeNumber = 0
-    }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(true)
-        
-        UIApplication.shared.applicationIconBadgeNumber = 0
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -143,7 +126,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Unable to fetch")
         }
         
-        UIApplication.shared.applicationIconBadgeNumber = 0
         
         tableView.reloadData()
         
@@ -158,18 +140,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    
     
     //Delete item
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
-        if editingStyle == UITableViewCellEditingStyle.delete
+        if editingStyle == UITableViewCell.EditingStyle.delete
         {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             
-            var title2 = String()
+            var notificationID = String()
             let notiID = notiIdentifier[indexPath.row]
-            title2 = notiID.value(forKey: "notiIdentifier") as! String
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [title2])
+            notificationID = notiID.value(forKey: "notiIdentifier") as! String
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
             
             context.delete(titleName[indexPath.row])
             context.delete(descriptionName[indexPath.row])

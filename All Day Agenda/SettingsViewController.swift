@@ -25,11 +25,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     
         navigationItem.hidesBackButton = true
         
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        } else {
-            
-        }
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         reportButtonLabel.layer.cornerRadius = 10
 
@@ -66,8 +62,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     @objc func showSendMailErrorAlert()
     {
-        let alert = UIAlertController(title: "Could Not Send Mail", message: "Unable to send email. Please check your email configuration, and try again.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: "Could Not Send Mail", message: "Unable to send email. Please check your email configuration, and try again.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -110,7 +106,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     {
         let alert = UIAlertController(title: "Your Repeated Notification", message: "You will receive a notification a 9:00AM every day to remind you to check your agenda.", preferredStyle: .alert)
         
-        let okButton = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         
         alert.addAction(okButton)
         

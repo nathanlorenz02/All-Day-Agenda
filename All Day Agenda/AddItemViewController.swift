@@ -41,9 +41,6 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     
-
-    
-    var menuShowing = false
     
     let priorityTypes = ["Select --", "Low", "Medium", "High"]
     
@@ -105,19 +102,13 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         textField.textColor = UIColor.lightGray
         
         
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
-        } else {
-            
-        }
-        
-        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         
         //Done Button on keyobard for keyboards
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.doneClicked))
         
         
         
@@ -168,10 +159,15 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     //Hideing keyboard features
     @objc func textViewDidBeginEditing(_ textView: UITextView)
     {
-        if textField.textColor == UIColor.lightGray
+        textField.text = ""
+        if textField.textColor == UIColor.gray
         {
-            textField.text = ""
-            textField.textColor = UIColor.black
+            if traitCollection.userInterfaceStyle == .light {
+                 textField.textColor = UIColor.black
+            }
+            else {
+                textView.textColor = UIColor.white
+            }
             
         }
         
@@ -263,7 +259,7 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     {
         let content = UNMutableNotificationContent()
         content.body = (titleTextBox.text as String?)!
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         
         var dateComponents = DateComponents()
         let dateformatter = DateFormatter()
@@ -332,8 +328,8 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
         else
         {
-            let alert = UIAlertController(title: "Please add a title", message: "Item Title doesn't have any text. Please add a title to continue.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "Please add a title", message: "Item Title doesn't have any text. Please add a title to continue.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -346,8 +342,8 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
         else
         {
-            let alert = UIAlertController(title: "Please add a description", message: "Please add a description to continue.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "Please add a description", message: "Please add a description to continue.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
         }
@@ -386,6 +382,7 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             textField.text = "Item Description"
             textField.textColor = UIColor.lightGray
         }
+        
       
         
     }
