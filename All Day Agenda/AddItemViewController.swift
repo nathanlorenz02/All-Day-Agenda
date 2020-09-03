@@ -323,8 +323,6 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         {
             //Add title
             addTitle()
-            
-            
         }
         else
         {
@@ -334,7 +332,7 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
         
         //Description
-        if (textField.text != "")
+        if (textField.text != "Item Description")
         {
             //Description
             addDescription()
