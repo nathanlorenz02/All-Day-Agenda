@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! customTableView
         cell.titleText?.text = name.value(forKey: "name") as? String
         cell.notesText?.text = description.value(forKey: "descriptionText") as? String
-        cell.priorityText?.text = priority.value(forKey: "priority") as? String
+        cell.priorityText?.text = priority.value(forKey: "priorityType") as? String
         
         
         if cell.priorityText.text == "High"
@@ -191,7 +191,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         title2 = (title.value(forKeyPath: "name") as? String)!
         
         let priority = priorityName[indexPath.row]
-        priority2 = (priority.value(forKeyPath: "priority") as? String)!
+        priority2 = (priority.value(forKeyPath: "priorityType") as? String)!
         
         let description = descriptionName[indexPath.row]
         description2 = (description.value(forKeyPath: "descriptionText") as? String)!

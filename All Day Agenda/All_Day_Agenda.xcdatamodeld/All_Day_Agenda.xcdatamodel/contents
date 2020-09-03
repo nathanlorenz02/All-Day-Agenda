@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Description" representedClassName="Description" syncable="YES" codeGenerationType="class">
-        <attribute name="descriptionText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Name" representedClassName="Name" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <entity name="NotiIdentifier" representedClassName="NotiIdentifier" syncable="YES" codeGenerationType="class">
-        <attribute name="notiIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notiIdentifier" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Priority" representedClassName="Priority" syncable="YES" codeGenerationType="class">
-        <attribute name="priority" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priorityType" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Description" positionX="-54" positionY="0" width="128" height="60"/>
         <element name="Name" positionX="-63" positionY="-18" width="128" height="60"/>
-        <element name="Priority" positionX="-36" positionY="18" width="128" height="60"/>
         <element name="NotiIdentifier" positionX="-45" positionY="9" width="128" height="60"/>
+        <element name="Priority" positionX="-54" positionY="9" width="128" height="58"/>
     </elements>
 </model>

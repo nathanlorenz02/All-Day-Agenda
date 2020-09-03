@@ -160,15 +160,11 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @objc func textViewDidBeginEditing(_ textView: UITextView)
     {
         textField.text = ""
-        if textField.textColor == UIColor.gray
-        {
-            if traitCollection.userInterfaceStyle == .light {
-                 textField.textColor = UIColor.black
-            }
-            else {
-                textView.textColor = UIColor.white
-            }
-            
+        if traitCollection.userInterfaceStyle == .light {
+             textField.textColor = UIColor.black
+        }
+        else {
+            textField.textColor = UIColor.white
         }
         
     }
@@ -241,13 +237,11 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Priority", in: context)!
         let theName = NSManagedObject(entity: entity, insertInto: context)
-        theName.setValue(priorityTextBox.text, forKey: "priority")
+        theName.setValue(priorityTextBox.text, forKey: "priorityType")
         
         do
         {
             try context.save()
-            
-            
         }
         catch
         {
@@ -350,24 +344,30 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         if priorityTextBox.text == ""
         {
             priorityTextBox.text = "Low"
-            
             addPriority()
+            print(1)
         }
         else if priorityTextBox.text == "Select --"
         {
             priorityTextBox.text = "Low"
             
             addPriority()
+            print(2)
         }
-        else if priorityTextBox.text != "Low" && priorityTextBox.text != "Medium" && priorityTextBox.text != "High"
-        {
-            priorityTextBox.text = "Low"
-            
-            addPriority()
-        }
-        else if priorityTextBox.text != ""
+        else if priorityTextBox.text == "Low"
         {
             addPriority()
+            print(3)
+        }
+        else if priorityTextBox.text == "Medium"
+        {
+            addPriority()
+            print(4)
+        }
+        else if priorityTextBox.text == "High"
+        {
+            addPriority()
+            print(5)
         }
        
         
@@ -375,11 +375,8 @@ class AddItemViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         //Resetting
         titleTextBox.text = nil
         priorityTextBox.text = nil
-        if textField.textColor == UIColor.black
-        {
-            textField.text = "Item Description"
-            textField.textColor = UIColor.lightGray
-        }
+        textField.text = "Item Description"
+        textField.textColor = UIColor.lightGray
         
       
         
